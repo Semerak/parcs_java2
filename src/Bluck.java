@@ -71,7 +71,7 @@ public class Bluck{
 
             p.execute("BoyerMoore");
             //c.write(input);
-            c.write(target);
+            //c.write(target);
 
             System.out.println("Waiting for result .. ");
 
