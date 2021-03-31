@@ -1,19 +1,25 @@
 import java.io.Serializable;
 
 public class Input implements Serializable {
-    private String text;
-    private String pattern;
+    private String target;
+    private Integer start;
+    private Integer finish;
 
-    public Input(String text, String pattern) {
-        this.text = text;
-        this.pattern = pattern;
+    public Input(String target, Integer start, Integer finish) {
+        this.target = target;
+        this.start = start;
+        this.finish = finish;
     }
 
-    public String getText() {
-        return text;
+    public String getTarget() {
+        return target;
     }
 
-    public String getPattern() {
-        return pattern;
+    public Integer getStart() {
+        return start;
+    }
+
+    public Integer getFinish() {
+        return finish;
     }
 }

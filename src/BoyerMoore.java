@@ -1,71 +1,60 @@
 import parcs.*;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoyerMoore implements AM {
     static int NO_OF_CHARS = 256;
 
-    //A utility function to get maximum of two integers
-    static int max(int a, int b) {
-        return (a > b) ? a : b;
-    }
 
-    static void badCharHeuristic( String pattern, int size,int badchar[])
-    {
-        int i;
-
-        // Initialize all occurrences as -1
-        for (i = 0; i < NO_OF_CHARS; i++)
-            badchar[i] = -1;
-
-        // Fill the actual value of last occurrence
-        // of a character
-        for (i = 0; i < size; i++)
-            badchar[(int) pattern.charAt(i)] = i;
-    }
-
-    // A pattern searching function that uses Bad Character Heuristic of Boyer Moore Algorithm
-    public Result search(String text, String pattern) {
-        Result result = new Result();
-        int m = pattern.length();
-        int n = text.length();
-
-        int badchar[] = new int[NO_OF_CHARS];
-
-      /* Fill the bad character array by calling
-         the preprocessing function badCharHeuristic()
-         for given pattern */
-        badCharHeuristic(pattern, m, badchar);
-
-        int s = 0;  // s is shift of the pattern with respect to text
-        while (s <= (n - m)) {
-            int j = m - 1;
-
-            //reducing index of pattern while matching at this shift s */
-            while (j >= 0 && pattern.charAt(j) == text.charAt(s + j) )
-                j--;
-
-            // the pattern is present -> j = -1
-            if (j < 0) {
-                result.addIndex(s);
-                // shift to last occurrence of the character
-                s += (s + m < n) ? m - badchar[text.charAt(s + m)] : 1;
-
-            } else
-                s += max(1, j - badchar[text.charAt(s + j)]);
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
         }
+        return hexString.toString();
 
-        return result;
+
+    }
+
+    private static String finder(String target, int start, int finish){
+
+        List<String> list=new ArrayList<String>();
+        for(int i=start;i<=finish;i++) {
+            String originaString = String.valueOf(i);
+            MessageDigest digest = null;
+
+            try {
+                digest = MessageDigest.getInstance("SHA-256");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+            byte[] encodedhash = digest.digest(
+                    originaString.getBytes(StandardCharsets.UTF_8));
+            String sha3Hex = bytesToHex(encodedhash);
+            if (target.equals(sha3Hex)){
+                list.add(originaString);
+            }
+        }
+        return  String.join(", ", list);
     }
 
     public void run(AMInfo info) {
         Input input = (Input) info.parent.readObject();
-        String text = input.getText();
-        String pattern = input.getPattern();
+        String target = input.getTarget();
+        Integer start = input.getStart();
+        Integer finish = input.getFinish();
 
-        System.out.println("Input : text = " + text + ", pattern = " + pattern);
+        System.out.println("Input : start = " + String.valueOf(start) + ", finish = " + String.valueOf(finish));
 
-        info.parent.write(search(text, pattern));
+        info.parent.write(finder(target,start,finish));
     }
 }
