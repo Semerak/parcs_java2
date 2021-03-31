@@ -48,6 +48,7 @@ public class BoyerMoore implements AM {
     }
 
     public void run(AMInfo info) {
+        System.out.println("Start " );
         Input input = (Input) info.parent.readObject();
         String target = input.getTarget();
         Integer start = input.getStart();
