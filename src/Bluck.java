@@ -73,7 +73,7 @@ public class Bluck{
             //c.write(input);
             //c.write(target);
 
-            System.out.println("Waiting for result .. ");
+            System.out.println("Waiting for result new.. ");
 
             String result = (String) (c.readObject());
             System.out.println("For "+ s +" - "+ f + ": "+result);
