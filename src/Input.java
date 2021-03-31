@@ -1,11 +1,11 @@
 import java.io.Serializable;
 
 public class Input implements Serializable {
-    private final String target;
-    private final Integer start;
-    private final Integer finish;
+    private  String target;
+    private  String  start;
+    private  String  finish;
 
-    public Input(String target, Integer start, Integer finish) {
+    public Input(String target, String start, String finish) {
         this.target = target;
         this.start = start;
         this.finish = finish;
@@ -15,11 +15,11 @@ public class Input implements Serializable {
         return this.target;
     }
 
-    public Integer getStart() {
+    public String getStart() {
         return this.start;
     }
 
-    public Integer getFinish() {
+    public String getFinish() {
         return this.finish;
     }
 }
