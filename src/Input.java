@@ -12,14 +12,14 @@ public class Input implements Serializable {
     }
 
     public String getTarget() {
-        return target;
+        return this.target;
     }
 
     public Integer getStart() {
-        return start;
+        return this.start;
     }
 
     public Integer getFinish() {
-        return finish;
+        return this.finish;
     }
 }
