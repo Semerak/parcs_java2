@@ -1,9 +1,9 @@
 import java.io.Serializable;
 
 public class Input implements Serializable {
-    private String target;
-    private Integer start;
-    private Integer finish;
+    private final String target;
+    private final Integer start;
+    private final Integer finish;
 
     public Input(String target, Integer start, Integer finish) {
         this.target = target;
