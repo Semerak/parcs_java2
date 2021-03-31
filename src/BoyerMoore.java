@@ -49,11 +49,13 @@ public class BoyerMoore implements AM {
 
     public void run(AMInfo info) {
         System.out.println("Start " );
-        Input input = (Input) info.parent.readObject();
-        String target = input.getTarget();
-        int start = Integer.parseInt(input.getStart());
-        int finish = Integer.parseInt(input.getFinish());
-
+        //Input input = (Input) info.parent.readObject();
+//        String target = input.getTarget();
+//        int start = Integer.parseInt(input.getStart());
+//        int finish = Integer.parseInt(input.getFinish());
+        String target = (String) info.parent.readObject();
+        int start=0;
+        int finish = 1000;
         System.out.println("Input : start = " + start + ", finish = " + finish);
 
         info.parent.write(finder(target,start,finish));

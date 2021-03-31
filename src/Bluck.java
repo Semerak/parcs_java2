@@ -67,15 +67,16 @@ public class Bluck{
             points.add(p);
             channels.add(c);
 
-            Input input = new Input(target, String.valueOf(s),String.valueOf(f));
+            //Input input = new Input(target, String.valueOf(s),String.valueOf(f));
 
             p.execute("BoyerMoore");
-            c.write(input);
+            //c.write(input);
+            c.write(target);
 
             System.out.println("Waiting for result .. ");
 
             String result = (String) (c.readObject());
-            System.out.println("For "+ String.valueOf(s)+" - "+ String.valueOf(f)+ ": "+result);
+            System.out.println("For "+ s +" - "+ f + ": "+result);
 //            if (ins.size() > 0) {
 //                System.out.println("Pattern ins : {");
 //                for (int index : ins) {
