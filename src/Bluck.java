@@ -67,10 +67,10 @@ public class Bluck{
             points.add(p);
             channels.add(c);
 
-            //Input input = new Input(target, String.valueOf(s),String.valueOf(f));
+            Input input = new Input(target, String.valueOf(s),String.valueOf(f));
 
             p.execute("BoyerMoore");
-            //c.write(input);
+            c.write(input);
             //c.write(target);
 
             System.out.println("Waiting for result new.. ");

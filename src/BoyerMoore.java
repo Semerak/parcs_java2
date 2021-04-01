@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoyerMoore implements AM {
-    static int NO_OF_CHARS = 256;
 
 
     private static String bytesToHex(byte[] hash) {
@@ -49,14 +48,14 @@ public class BoyerMoore implements AM {
 
     public void run(AMInfo info) {
         System.out.println("Start " );
-        //Input input = (Input) info.parent.readObject();
-//        String target = input.getTarget();
-//        int start = Integer.parseInt(input.getStart());
-//        int finish = Integer.parseInt(input.getFinish());
+        Input input = (Input) info.parent.readObject();
+        String target = input.getTarget();
+        int start = Integer.parseInt(input.getStart());
+        int finish = Integer.parseInt(input.getFinish());
         //String target = (String) (info.parent.readObject());
-        String target = "87e29676d583c04a1682dbd5bc0d989f8311c888655ca66bc486b6f7f76d4702";
-        int start=0;
-        int finish = 1000;
+//        String target = "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a";
+//        int start=0;
+//        int finish = 100;
         System.out.println("Input : start = " + start + ", finish = " + finish);
 
         info.parent.write(finder(target,start,finish));
