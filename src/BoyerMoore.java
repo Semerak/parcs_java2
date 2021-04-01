@@ -50,8 +50,8 @@ public class BoyerMoore implements AM {
         System.out.println("Start " );
         Input input = (Input) info.parent.readObject();
         String target = input.getTarget();
-        int start = Integer.parseInt(input.getStart());
-        int finish = Integer.parseInt(input.getFinish());
+        int start = input.getStart();
+        int finish = input.getFinish();
         //String target = (String) (info.parent.readObject());
 //        String target = "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a";
 //        int start=0;
