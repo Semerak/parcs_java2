@@ -57,6 +57,7 @@ public class BoyerMoore implements AM {
 //        int start=0;
 //        int finish = 100;
         System.out.println("Input0 : start = " + start + ", finish = " + finish);
+        System.out.println("Finding");
         String output = finder(target,start,finish);
         System.out.println("Result: "+output);
         info.parent.write(output);
