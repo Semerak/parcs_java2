@@ -73,10 +73,10 @@ public class Bluck{
             c.write(input);
             //c.write(target);
 
-            System.out.println("Waiting for result .. ");
-
-            String result = (String) (c.readObject());
-            System.out.println("For "+ s +" - "+ f + ": "+result);
+//            System.out.println("Waiting for result .. ");
+//
+//            String result = (String) (c.readObject());
+//            System.out.println("For "+ s +" - "+ f + ": "+result);
 //            if (ins.size() > 0) {
 //                System.out.println("Pattern ins : {");
 //                for (int index : ins) {
@@ -85,6 +85,12 @@ public class Bluck{
 //                System.out.println("}");
 //                System.out.println("Size: " + ins.size());
 //            }
+        }
+        for(parcs.channel channel : channels){
+            System.out.println("Waiting for result .. ");
+
+            String result = (String) (channel.readObject());
+            System.out.println("Res "+result);
         }
 
 
