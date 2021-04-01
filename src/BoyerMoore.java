@@ -39,7 +39,7 @@ public class BoyerMoore implements AM {
             byte[] encodedhash = digest.digest(
                     originaString.getBytes(StandardCharsets.UTF_8));
             String sha3Hex = bytesToHex(encodedhash);
-            if (target.equals(sha3Hex)){
+            if (sha3Hex.equals(target)){
                 list.add(originaString);
                 System.out.println("\nFound: "+originaString+"\n");
             }
