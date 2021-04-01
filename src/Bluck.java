@@ -90,11 +90,14 @@ public class Bluck{
         }
         List<String> list=new ArrayList<String>();
         for(parcs.channel channel : channels){
-            System.out.println("Waiting for result .. ");
+            System.out.println("Waiting for result ... ");
 
             String result = (String) (channel.readObject());
             //System.out.println("Res "+result);
-            list.add(result);
+            if(result.length() != 0){
+                list.add(result);
+            }
+
         }
         double estimatedTime = (double) (System.nanoTime() - startTime) / 1000000000;
         System.out.println("Time total (excluding IO): " + estimatedTime);
