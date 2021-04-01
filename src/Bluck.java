@@ -24,6 +24,8 @@ public class Bluck{
         int global_finish = Integer.parseInt(file[2]);
         int n = Integer.parseInt(file[3]);
 
+        long startTime = System.nanoTime();
+
         AMInfo info = new AMInfo(curtask, null);
 
 //        int N = 10;
@@ -86,12 +88,18 @@ public class Bluck{
 //                System.out.println("Size: " + ins.size());
 //            }
         }
+        List<String> list=new ArrayList<String>();
         for(parcs.channel channel : channels){
             System.out.println("Waiting for result .. ");
 
             String result = (String) (channel.readObject());
-            System.out.println("Res "+result);
+            //System.out.println("Res "+result);
+            list.add(result);
         }
+        double estimatedTime = (double) (System.nanoTime() - startTime) / 1000000000;
+        System.out.println("Time total (excluding IO): " + estimatedTime);
+
+        System.out.println("Result: "+String.join(", ", list));
 
 
         curtask.end();
