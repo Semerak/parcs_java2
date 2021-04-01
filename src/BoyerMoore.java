@@ -41,11 +41,13 @@ public class BoyerMoore implements AM {
             String sha3Hex = bytesToHex(encodedhash);
             if (target.equals(sha3Hex)){
                 list.add(originaString);
+                System.out.println("\nFound: "+originaString+"\n");
             }
             if (i == 4){
                 System.out.println("\n \n 4: "+ sha3Hex+" != "+ target);
             }
         }
+        System.out.println(list);
         return  String.join(", ", list);
     }
 
